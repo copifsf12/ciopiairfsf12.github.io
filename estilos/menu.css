@@ -1,0 +1,378 @@
+/* Paleta de colores */
+:root {
+    --color-principal: #000000;
+    --color-secundario: #f48fb1;
+    --color-terciario: #880e4f;
+    --color-texto-claro: #eeeeee;
+    --color-fondo-claro: rgba(50, 50, 50, 0.3);
+    --color-sombra: rgba(0, 0, 0, 0.4);
+    --velocidad-animacion: 12s;
+}
+
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-principal);
+    color: var(--color-texto-claro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    /* Degradado sutil en el fondo */
+    background-image: linear-gradient(to bottom, #000000, #1a1a1a);
+}
+
+/* Contenedor principal */
+.contenedor-principal {
+    width: 90%;
+    max-width: 800px;
+    padding: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px var(--color-sombra),
+                0 0 50px rgba(244, 143, 177, 0.3); /* Resplandor adicional */
+    background-color: rgba(255, 255, 255, 0.07);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Borde sutil */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Encabezado */
+header h1 {
+    font-size: 2.7em;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 5px var(--color-sombra);
+    font-family: 'Dancing Script', cursive;
+    color: var(--color-secundario);
+    letter-spacing: 1.2px;
+    /* Pequeño efecto de relieve */
+    text-shadow: 1px 1px 2px var(--color-sombra), 0 0 1em var(--color-secundario);
+}
+
+/* Sección principal */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Corazón */
+.corazon-seccion {
+    margin-bottom: 25px;
+}
+
+.corazon-contenedor {
+    position: relative;
+    width: 230px;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.corazon {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-secundario);
+    transform: rotate(45deg);
+    box-shadow: -35px 35px 70px var(--color-terciario);
+    animation: palpitar 1s infinite alternate, cambiarColor 5s infinite alternate; /* Añadida animación de cambio de color */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.corazon i {
+    font-size: 4.2em;
+    color: var(--color-texto-claro);
+    text-shadow: 2px 2px 5px var(--color-sombra);
+}
+
+@keyframes palpitar {
+    0% {
+        transform: rotate(45deg) scale(1);
+    }
+    100% {
+        transform: rotate(45deg) scale(1.1);
+    }
+}
+
+/* Animación de cambio de color del corazón */
+@keyframes cambiarColor {
+    0% {
+        background-color: var(--color-secundario); /* Rosa */
+    }
+    50% {
+        background-color: #ffc107; /* Amarillo */
+    }
+    100% {
+        background-color: var(--color-secundario); /* Rosa */
+    }
+}
+
+/* Botón ver cartas */
+.mensaje-seccion {
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mensaje-seccion .mensaje {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mensaje-seccion .mensaje a {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 1.2em;
+    text-decoration: none;
+    background-color: var(--color-secundario);
+    color: var(--color-texto-claro);
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 6px var(--color-sombra);
+    width: auto;
+    min-width: 160px;
+    box-sizing: border-box;
+    letter-spacing: 0.8px;
+    /* Efecto de resplandor al pasar el ratón */
+    transition: all 0.3s ease;
+}
+
+.mensaje-seccion .mensaje a:hover {
+    background-color: var(--color-terciario);
+    transform: scale(1.07);
+    box-shadow: 0 8px 16px var(--color-sombra);
+    /* Resplandor más intenso al pasar el ratón */
+    box-shadow: 0 0 20px rgba(244, 143, 177, 0.7);
+}
+
+/* Pie de página */
+footer {
+    margin-top: 35px;
+    font-size: 0.95em;
+    color: #999;
+    text-shadow: 1px 1px 2px var(--color-sombra);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    opacity: 0.8;
+    /* Sombra sutil */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Decoraciones laterales - Corazones Flotantes */
+.decoracion-izquierda,
+.decoracion-derecha {
+    position: fixed;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.decoracion-izquierda {
+    left: 0;
+    /* Degradado vertical */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.decoracion-derecha {
+    right: 0;
+    /* Degradado vertical */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.decoracion-izquierda::before,
+.decoracion-izquierda::after,
+.decoracion-derecha::before,
+.decoracion-derecha::after {
+    content: '\f004';
+    font-family: FontAwesome;
+    position: absolute;
+    color: var(--color-secundario);
+    font-size: 2.2em;
+    animation: flotar var(--velocidad-animacion) linear infinite;
+    opacity: 0.7;
+    text-shadow: 1px 1px 3px var(--color-sombra);
+}
+
+.decoracion-izquierda::before {
+    left: 25%;
+    bottom: 0;
+    animation-delay: 1s;
+}
+
+.decoracion-izquierda::after {
+    left: 70%;
+    bottom: 15%;
+    animation-delay: calc(var(--velocidad-animacion) / 3);
+    font-size: 2.7em;
+}
+
+.decoracion-derecha::before {
+    right: 25%;
+    bottom: 30%;
+    animation-delay: calc(var(--velocidad-animacion) / 2);
+}
+
+.decoracion-derecha::after {
+    right: 65%;
+    bottom: 45%;
+    animation-delay: calc(var(--velocidad-animacion) * 2 / 3);
+    font-size: 3.2em;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(110vh) scale(0.2);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.7;
+    }
+    80% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Estilos para el confeti */
+.confeti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #ffb300;
+    border-radius: 50%;
+    animation: caerConfeti 3s linear infinite;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.8;
+}
+
+@keyframes caerConfeti {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Estilos para las cintas */
+.cinta {
+    position: absolute;
+    width: 22px;
+    height: 110px;
+    background-color: #f48fb1;
+    opacity: 0.6;
+    animation: caerCinta 5s linear infinite;
+    pointer-events: none;
+    z-index: 3;
+    transform-origin: top center;
+    border-radius: 50%;
+}
+
+@keyframes caerCinta {
+    0% {
+        transform: translateY(-20vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(120vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Media Queries para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    .contenedor-principal {
+        width: 95%;
+        padding: 30px;
+    }
+
+    header h1 {
+        font-size: 2.3em;
+    }
+
+    .corazon-contenedor {
+        width: 200px;
+        height: 200px;
+    }
+
+    .corazon i {
+        font-size: 3.5em;
+    }
+
+    .mensaje-seccion .mensaje a {
+        font-size: 1.1em;
+        padding: 12px 24px;
+    }
+
+    footer {
+        font-size: 0.85em;
+    }
+
+    .decoracion-izquierda,
+    .decoracion-derecha {
+        width: 7%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .corazon-contenedor {
+        width: 170px;
+        height: 170px;
+    }
+
+    .corazon i {
+        font-size: 3em;
+    }
+
+   .decoracion-izquierda,
+    .decoracion-derecha {
+        display: none;
+    }
+}
